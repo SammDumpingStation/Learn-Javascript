@@ -12,10 +12,37 @@
       <p>Orders Under $40 = + $10.</p>
       <p>Orders Over $40 = FREE Shipping.</p>
       <div>
-        <input type="text" placeholder="Cost of Order" />
-        <button>Calculate</button>
+        <input
+          type="text"
+          placeholder="Cost of Order"
+          class="input-cost"
+          onkeydown="onKeyDown(event);"
+        />
+        <button class="calculate-button" onclick="getCalculatedValue();">
+          Calculate
+        </button>
       </div>
-      <p class="total-after-calculation">0</p>
+      <p class="total-after-calculation">Hi User, Welcome!</p>
     </div>
+
+    <script>
+      function onKeyDown(event) {
+        if (event.key === "Enter") {
+          getCalculatedValue();
+        }
+      }
+
+      function getCalculatedValue() {
+        let costInput = document.querySelector(".input-cost");
+        let userCost = Number(costInput.value);
+        let totalAfterTax = document.querySelector(".total-after-calculation");
+        if (userCost < 40 && userCost > 0) {
+          userCost += 10;
+          totalAfterTax.innerHTML = `After tax: $${userCost}`;
+        } else {
+          totalAfterTax.innerHTML = `After tax: $${userCost}`;
+        }
+      }
+    </script>
   </body>
 </html>
