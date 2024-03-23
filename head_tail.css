@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  background: black;
+  font-size: 16px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 10px auto;
+}
+
+p {
+  color: white;
+  margin-top: 20px;
+}
+.record {
+  margin-bottom: 10px;
+}
+
+div {
+  margin-top: 70px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+img {
+  width: 40%;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: transparent;
+  font-size: 20px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+p {
+  font-size: 20px;
+}
+
+span {
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}

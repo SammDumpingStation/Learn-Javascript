@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="website.css" />
+    <title>Javascript Practice</title>
+  </head>
+  <body>
+    <p>Adults Plain Cotton T-Shirt</p>
+    <p>Price:$7.99</p>
+    <button id="add" onclick="alert('Added!');">Add to Cart</button>
+    <button
+      id="buy-now"
+      onclick="console.log('Loading..'); alert('Purchased');"
+    >
+      Buy now
+    </button>
+    <br />
+    <br />
+    <p>Cart Quantity</p>
+
+    <button
+      onclick="
+    console.log(`Cart Quantity: ${showQuantity}`);
+    "
+    >
+      Show Quantity
+    </button>
+
+    <button
+      onclick="
+      showQuantity += 1;
+      if (showQuantity <= 10) {
+      console.log(`Cart Quantity: ${showQuantity}`);
+      }
+      else {
+        console.log('The cart is Full! Please Reduce or Reset the Items');
+        showQuantity -= 1;
+      }
+    "
+    >
+      Add to Cart
+    </button>
+
+    <button
+      onclick="
+      showQuantity += 2;
+      if (showQuantity <= 10) {
+      console.log(`Cart Quantity: ${showQuantity}`);
+      }
+      else {
+        console.log('The cart is Full! Please Reduce or Reset the Items');
+        showQuantity -= 2;
+      }
+    "
+    >
+      +2
+    </button>
+    <button
+      onclick="
+      showQuantity += 3;
+      if (showQuantity <= 10) {
+      console.log(`Cart Quantity: ${showQuantity}`);
+      }
+      else {
+        console.log('The cart is Full! Please Reduce or Reset the Items');
+        showQuantity -= 3;
+      }
+    "
+    >
+      +3
+    </button>
+    <button
+      onclick="showQuantity = 0; console.log(`Cart Reseted!`);
+    "
+    >
+      Reset Cart
+    </button>
+
+    <button
+      onclick="
+      showQuantity += 4;
+      if (showQuantity <= 10) {
+      console.log(`Cart Quantity: ${showQuantity}`);
+      }
+      else {
+        console.log('The cart is Full! Please Reduce or Reset the Items');
+        showQuantity -= 4;
+      }
+    "
+    >
+      +4
+    </button>
+    <button
+      onclick="
+      showQuantity += 5;
+      if (showQuantity <= 10) {
+      console.log(`Cart Quantity: ${showQuantity}`);
+      }
+      else {
+        console.log('The cart is Full! Please Reduce or Reset the Items');
+        showQuantity -= 5;
+      }
+    "
+    >
+      +5
+    </button>
+    <button
+      onclick="
+      showQuantity -= 1;
+      if (showQuantity < 0) {
+        console.log('The minimum cart quantity is 0, Please add some Items');
+        showQuantity += 1;
+      }
+    "
+    >
+      Remove from Cart
+    </button>
+    <button
+      onclick="
+      showQuantity -= 2;
+      if (showQuantity < 0) {
+        console.log('The minimum cart quantity is 0, Please add some Items');
+        showQuantity += 2;
+      }
+      "
+    >
+      -2
+    </button>
+    <button
+      onclick="      
+      showQuantity -= 3;
+      if (showQuantity < 0) {
+        console.log('The minimum cart quantity is 0, Please add some Items');
+        showQuantity += 3;
+      }"
+    >
+      -3
+    </button>
+
+    <br />
+    <br />
+
+    <button
+      onclick="addString += one;
+      console.log(addString);"
+    >
+      1
+    </button>
+    <button
+      onclick="addString+= two;
+      console.log(addString);"
+    >
+      2
+    </button>
+    <button
+      onclick="addString+= three;
+      console.log(addString);"
+    >
+      3
+    </button>
+    <button
+      onclick="addString;
+      let sumString = eval(addString);
+      console.log(addString + equals + sumString);
+      "
+    >
+      =
+    </button>
+    <button
+      onclick="addString+= plus;
+      console.log(addString)"
+    >
+      +
+    </button>
+    <script>
+      let addString = "";
+      const one = 1;
+      const two = 2;
+      const three = 3;
+      const equals = " = ";
+      const plus = " + ";
+      let sum = 0;
+
+      let showQuantity = 0;
+
+      const name = "Samm";
+      console.log(`My name is: ${name}`);
+
+      const coffee = 5;
+      const bagel = 3;
+      const soup = 9;
+      const cost = coffee + 2 * bagel + soup;
+      console.log(`Cost of food: $${cost}`);
+
+      const tax = cost * 0.1;
+      console.log(`Total Tax(10%): $${tax}`);
+
+      const totalCost = cost + tax;
+      console.log(`Total Cost(with Tax): $${totalCost}`);
+    </script>
+  </body>
+</html>

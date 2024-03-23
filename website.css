@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+#add,
+#buy-now {
+  border: 2px solid black;
+}
+
+#add {
+  background-color: yellow;
+}
+
+#buy-now {
+  background-color: orange;
+}

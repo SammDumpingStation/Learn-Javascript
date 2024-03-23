@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="calculator.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="calculator-case">
+      <p class="calculation-text">0</p>
+      <div class="calculator-buttons">
+        <button
+          class="operations"
+          onclick="
+        total = '0';
+        calculatorDisplay(total);
+        saveCalculation();
+        "
+        >
+          AC
+        </button>
+
+        <button
+          class="operations"
+          onclick=" 
+        numberCalculator('%');
+        "
+        >
+          %
+        </button>
+
+        <button
+          class="operations"
+          onclick="
+        total = 0;
+        calculatorDisplay(total);
+        saveCalculation();
+        "
+        >
+          C
+        </button>
+
+        <button
+          class="operations"
+          onclick=" 
+        numberCalculator(divisionSign);
+        "
+        >
+          &#247;
+        </button>
+
+        <button
+          onclick=" 
+          numberCalculator('7');
+          calculatorDisplay(total);
+        "
+        >
+          7
+        </button>
+        <button
+          onclick="
+        numberCalculator('8'); 
+        calculatorDisplay(total);
+        "
+        >
+          8
+        </button>
+        <button
+          onclick=" 
+        numberCalculator('9');
+        calculatorDisplay(total);
+        "
+        >
+          9
+        </button>
+
+        <button
+          class="operations"
+          onclick="
+        numberCalculator(' * ');
+        calculatorDisplay(total);
+        "
+        >
+          X
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('4');
+        calculatorDisplay(total);
+        "
+        >
+          4
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('5');
+        calculatorDisplay(total);
+        "
+        >
+          5
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('6');
+        calculatorDisplay(total);
+        "
+        >
+          6
+        </button>
+
+        <button
+          class="operations"
+          onclick="
+        numberCalculator(' - ');
+        "
+        >
+          -
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('1');
+        calculatorDisplay(total);
+        "
+        >
+          1
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('2');
+        calculatorDisplay(total);
+        "
+        >
+          2
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('3');
+        calculatorDisplay(total);
+        "
+        >
+          3
+        </button>
+
+        <button
+          class="operations"
+          onclick="
+        numberCalculator(' + ');
+        "
+        >
+          +
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('00');
+        calculatorDisplay(total);
+        "
+        >
+          00
+        </button>
+
+        <button
+          onclick="
+        numberCalculator('0');
+        calculatorDisplay(total);
+        "
+        >
+          0
+        </button>
+
+        <button
+          onclick="
+      numberCalculator('.');
+      "
+        >
+          .
+        </button>
+
+        <button
+          id="equals"
+          onclick="
+          let sumString = eval(total);
+          calculatorDisplay(sumString);
+          total = '';
+          numberCalculator(sumString);
+          saveCalculation();
+      "
+        >
+          =
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let total = localStorage.getItem("total") || "";
+      const divisionSign = "&#247;";
+
+      function numberCalculator(number) {
+        const insideDispaly = document.querySelector(".calculation-text");
+        if (insideDispaly.innerHTML === "0") {
+          insideDispaly.innerHTML = number;
+          total = number;
+        } else if (number === divisionSign) {
+          number = "/";
+          total += number;
+        } else {
+          total += number;
+        }
+        calculatorDisplay(total);
+        saveCalculation();
+      }
+
+      function saveCalculation() {
+        localStorage.setItem("total", total);
+      }
+      function calculatorDisplay(display) {
+        document.querySelector(".calculation-text").innerHTML = display;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="head_tail.css" />
+    <title>Head and Tails</title>
+  </head>
+  <body>
+    <h1>Heads | | Tails</h1>
+    <h3>Guess the Computers Move!</h3>
+
+    <div>
+      <img
+        onclick="
+      userMove = 'Heads';
+      verdict(userMove);
+      "
+        src="2005phil05pisoobv-removebg-preview.png"
+        alt="Front of a 5 peso Philippine Coin or Heads"
+      />
+      <strong></strong>
+      <img
+        onclick="
+      userMove = 'Tails';
+      verdict(userMove);
+      "
+        src="2005phil05pisorev-removebg-preview.png"
+        alt="Back of a 5 peso Philippine Coin or Tails"
+      />
+    </div>
+    <p class="me-computer-move"></p>
+    <p class="record"></p>
+    <button
+      onclick="
+      guessResult.wrong = 0;
+      guessResult.correct = 0;
+      localStorage.removeItem('Result');
+      ourMove(reset, reset);
+      record(reset);
+      console.log(guessResult);"
+    >
+      Reset Score
+    </button>
+  </body>
+
+  <script>
+    let guessResult = JSON.parse(localStorage.getItem("Result")) || {
+      correct: 0,
+      wrong: 0,
+    };
+    const start = "Start";
+    const reset = "Reset";
+    let userMove = "";
+    console.log(guessResult);
+    ourMove(start, start);
+    record(start);
+
+    function verdict(move) {
+      let randomComputerMove = Math.random();
+      let computerMove = "";
+      let result = "";
+
+      if (randomComputerMove >= 0 && randomComputerMove <= 1 / 2) {
+        computerMove = "Heads";
+      } else if (randomComputerMove > 1 / 2 && randomComputerMove <= 1) {
+        computerMove = "Tails";
+      }
+
+      if (move === "Heads" && computerMove === "Heads") {
+        guessResult.correct++;
+        result = "Correct";
+      } else if (move === "Tails" && computerMove === "Heads") {
+        guessResult.wrong++;
+        result = "Wrong";
+      } else if (move === "Heads" && computerMove === "Tails") {
+        guessResult.wrong++;
+        result = "Wrong";
+      } else if (move === "Tails" && computerMove === "Tails") {
+        guessResult.correct++;
+        result = "Correct";
+      }
+      storeLocally();
+      ourMove(userMove, computerMove);
+      record(result);
+      console.log(randomComputerMove);
+    }
+
+    function storeLocally() {
+      localStorage.setItem("Result", JSON.stringify(guessResult));
+    }
+
+    function record(results) {
+      if (results === "Start") {
+        document.querySelector(
+          ".record"
+        ).innerHTML = `Let's start the Game Shall we?`;
+      } else if (results === "Reset") {
+        document.querySelector(
+          ".record"
+        ).innerHTML = `Scores have been <span>Reseted</span>!. Correct Guesses: <span class="green">${guessResult.correct}</span> Wrong Guesses: <span class="red">${guessResult.wrong}</span>`;
+      } else {
+        document.querySelector(
+          ".record"
+        ).innerHTML = `You Guessed <span>${results}</span>!! Correct Guesses: <span class="green">${guessResult.correct}</span> Wrong Guesses: <span class="red">${guessResult.wrong}</span>`;
+      }
+    }
+
+    function ourMove(myMove, compMove) {
+      if (
+        myMove === "Start" ||
+        compMove === "Start" ||
+        myMove === "Reset" ||
+        compMove === "Reset"
+      ) {
+        document.querySelector(
+          ".me-computer-move"
+        ).innerHTML = `No moves has been used yet, pick a coin!`;
+      } else {
+        document.querySelector(
+          ".me-computer-move"
+        ).innerHTML = `Your Move: <span class="green">${myMove}</span>  Computer's Move: <span class="red">${compMove}</span>`;
+      }
+    }
+  </script>
+</html>
