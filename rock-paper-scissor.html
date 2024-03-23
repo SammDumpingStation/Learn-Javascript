@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="rock-paper-scissor.css">
+    <title>Rock Paper Scissors Game</title>
+  </head>
+  <body>
+    <h3>Rock Paper Scissors</h3>
+    <div>
+      <img src="stone-casting-throw.gif" alt="bro throwing stones" class="choices">
+      <button
+        onclick="
+          userMove = 'Rock';
+          fightResult(userMove);
+      "
+      >
+        Rock
+      </button>
+      <button
+        onclick="
+          userMove = 'Paper'; 
+          fightResult(userMove);"
+      >
+        Paper
+      </button>
+      <button
+        onclick="
+          userMove = 'Scissors';   
+          fightResult(userMove);"
+      >
+        Scissors
+      </button>
+      <button onclick="
+        points.Computer = 0;
+        points.Tie = 0;
+        points.User = 0;
+      ">Reset Button</button>
+    </div>
+
+
+    <script>
+      let userMove = "";
+      let result = "";
+      let points = {
+        Computer: 0,
+        User: 0,
+        Tie: 0,
+      };
+
+      function computerMove() {
+        let compMove = Math.random();
+        let pick = "";
+        if (compMove >= 0 && compMove <= 1 / 3) {
+          pick = "Rock";
+        } else if (compMove > 1 / 3 && compMove <= 2 / 3) {
+          pick = "Paper";
+        } else if (compMove > 2 / 3 && compMove <= 1) {
+          pick = "Scissors";
+        }
+        return pick;
+      }
+
+      function fightResult(userMove) {
+        let computerPick = computerMove();
+        if (computerPick === "Rock") {
+          if (userMove === "Rock") {
+            result = "Tie";
+          } else if (userMove === "Paper") {
+            result = "You Win";
+          } else if (userMove === "Scissors") {
+            result = "You Lose";
+          }
+        } else if (computerPick === "Paper") {
+          if (userMove === "Rock") {
+            result = "You lose";
+          } else if (userMove === "Paper") {
+            result = "Tie";
+          } else if (userMove === "Scissors") {
+            result = "You Win";
+          }
+        } else if (computerPick === "Scissors") {
+          if (userMove === "Rock") {
+            result = "You Win";
+          } else if (userMove === "Paper") {
+            result = "You lose";
+          } else if (userMove === "Scissors") {
+            result = "Tie";
+          }
+        }
+        if (result === "You Win") {
+          points.User++;
+        } else if (result === "You lose") {
+          points.Computer++;
+        } else if (result === "Tie") {
+          points.Tie++;
+        }
+        alert(
+          `You picked ${userMove} while Computer picked ${computerPick}. ${result}.
+User: ${points.User} Computer: ${points.Computer} Tie: ${points.Tie}.`
+        );
+      }
+    </script>
+  </body>
+</html>
