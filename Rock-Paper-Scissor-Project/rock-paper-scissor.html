@@ -3,50 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="rock-paper-scissor.css">
+    <link rel="stylesheet" href="rock-paper-scissor.css" />
     <title>Rock Paper Scissors Game</title>
   </head>
   <body>
-    <h3>Rock Paper Scissors</h3>
+    <h1>Rock Paper Scissors</h1>
+    <h3>Defeat me!</h3>
     <div>
-      <img src="rockFrame.png" alt="bro throwing stones" class="choices">
+      <img class="user-image" src="userImage.png" alt="" />
+      <img class="computer-image" src="userImage.png" alt="" />      
+    </div>
 
-      <button
-        onclick="
-          userMove = 'Rock';
-          fightResult(userMove);
-      "
-      >
-        Rock
-      </button>
+    <p>Hint: Pick your move and show your prowess!</p>
+    <div>
+      <img
+        onclick=" userMove = 'Rock'; fightResult(userMove);"
+        src="rockFrame.png"
+        alt="bro throwing stones"
+        class="choices"
+      />
 
-      <img src="paperFrame.png" alt="bro throwing stones" class="choices">
+      <img
+        onclick=" userMove = 'Paper'; fightResult(userMove);"
+        src="paperFrame.png"
+        alt="bro throwing stones"
+        class="choices"
+      />
 
-      <button
-        onclick="
-          userMove = 'Paper'; 
-          fightResult(userMove);"
-      >
-        Paper
-      </button>
-
-      <img src="scissorFrame.png" alt="bro throwing stones" class="choices">
-      
-      <button
-        onclick="
-          userMove = 'Scissors';   
-          fightResult(userMove);"
-      >
-        Scissors
-      </button>
-      
-      <button onclick="
+      <img
+        onclick=" userMove = 'Scissors'; fightResult(userMove);"
+        src="scissorFrame.png"
+        alt="bro throwing stones"
+        class="choices"
+      />
+    </div>
+    <button
+      onclick="
         points.Computer = 0;
         points.Tie = 0;
         points.User = 0;
-      ">Reset Button</button>
-    </div>
-
+      "
+    >
+      Reset Button
+    </button>
 
     <script>
       let userMove = "";

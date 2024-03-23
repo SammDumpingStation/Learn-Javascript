@@ -27,5 +27,22 @@ div {
 .choices {
   width: 200px;
   height: 200px;
-  border: 1px solid black;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.choices:hover {
+  background-color: white;
+}
+
+.computer-image,
+.user-image {
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  margin: 0;
+}
+
+.computer-image {
+  transform: scaleX(-1);
 }
