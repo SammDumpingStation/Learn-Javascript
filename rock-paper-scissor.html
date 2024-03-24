@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS-Folder/rock-paper-scissor.css" />
+    <title>Rock Paper Scissors Game</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <h3>Defeat me!</h3>
+    <div>
+      <img class="user-image" src="Images-Folder/userImage.png" alt="" />
+      <img class="computer-image" src="Images-Folder/userImage.png" alt="" />      
+    </div>
+
+    <p>Hint: Pick your move and show your prowess!</p>
+    <div>
+      <img
+        onclick=" userMove = 'Rock'; fightResult(userMove);"
+        src="Images-Folder/rockFrame.png"
+        alt="bro throwing stones"
+        class="choices"
+      />
+
+      <img
+        onclick=" userMove = 'Paper'; fightResult(userMove);"
+        src="Images-Folder/scissorFrame.png"
+        alt="bro throwing stones"
+        class="choices"
+      />
+
+      <img
+        onclick=" userMove = 'Scissors'; fightResult(userMove);"
+        src="Images-Folder/scissorFrame.png"
+        alt="bro throwing stones"
+        class="choices"
+      />
+    </div>
+    <button
+      onclick="
+        points.Computer = 0;
+        points.Tie = 0;
+        points.User = 0;
+      "
+    >
+      Reset Button
+    </button>
+
+    <script src="JS-Javascript-Folder/rock-paper-scissor.js">
+    </script>
+  </body>
+</html>
