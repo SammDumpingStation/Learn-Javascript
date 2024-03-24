@@ -36,10 +36,12 @@ div {
   height: 200px;
   border: none;
   border-radius: 10px;
+  transition: background-color 0.5s, transform 0.5s;
 }
 
 .choices:hover {
-  background-color: #d9bbec;
+  background-color: #aba9ab;
+  transform: translateY(-10px);
 }
 
 .computer-image,
@@ -57,6 +59,7 @@ div {
 .reset-button {
   border: 2px solid #d9bbec;
   padding: 20px;
+  color: #d9bbec;
   background-color: transparent;
   border-radius: 20px;
   font-size: 25px;
