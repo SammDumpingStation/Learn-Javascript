@@ -15,25 +15,25 @@
     </div>
 
     <p>Hint: Pick your move and show your prowess!</p>
-    <div>
+    <div class="choices-div">
       <img
-        onclick=" userMove = 'Rock'; fightResult(userMove);"
+        onclick=" yourMove = 'Rock'; fightResult(yourMove); scoreStorage();"
         src="Images-Folder/rockFrame.png"
-        alt="bro throwing stones"
+        alt="Rock Move"
         class="choices"
       />
 
       <img
-        onclick=" userMove = 'Paper'; fightResult(userMove);"
+        onclick=" yourMove = 'Paper'; fightResult(yourMove); scoreStorage();"
         src="Images-Folder/scissorFrame.png"
-        alt="bro throwing stones"
+        alt="Paper Move"
         class="choices"
       />
 
       <img
-        onclick=" userMove = 'Scissors'; fightResult(userMove);"
+        onclick=" yourMove = 'Scissors'; fightResult(yourMove); scoreStorage();"
         src="Images-Folder/scissorFrame.png"
-        alt="bro throwing stones"
+        alt="Scissor Move"
         class="choices"
       />
     </div>
@@ -42,7 +42,10 @@
         points.Computer = 0;
         points.Tie = 0;
         points.User = 0;
+        localStorage.removeItem('scoreTotal')
+        scoreStorage();
       "
+      class="reset-button"
     >
       Reset Button
     </button>
