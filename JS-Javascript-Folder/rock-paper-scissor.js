@@ -57,8 +57,14 @@ function fightResult(userMove) {
   } else if (result === "Tie") {
     points.Tie++;
   }
-  alert(
-    `You picked ${userMove} while Computer picked ${computerPick}. ${result}.
-  User: ${points.User} Computer: ${points.Computer} Tie: ${points.Tie}.`
-  );
+  renderScore(userMove, computerPick, result);
+}
+
+function renderScore(user, comp, output) {
+  let render = document.querySelector(".render-score");
+  if (user ==='reset' || comp === 'reset' || output === 'reset') {
+    render.innerHTML = `Scores have been reseted to 0! Start picking a move again!`;
+  } else {
+    render.innerHTML = `You picked ${user} while Computer picked ${comp}. ${output}. User: ${points.User} Computer: ${points.Computer} Tie: ${points.Tie}.`;
+  }
 }

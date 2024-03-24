@@ -9,13 +9,12 @@
   <body>
     <h1>Rock Paper Scissors</h1>
     <h3>Defeat me!</h3>
-    <h4>hi dong!!</h4>
     <div>
-      <img class="user-image" src="Images-Folder/userImage.png" alt="" />
-      <img class="computer-image" src="Images-Folder/userImage.png" alt="" />      
+      <img class="user-image" src="" alt="" />
+      <img class="computer-image" src="Images-Folder/userImage.png" alt="" />
     </div>
 
-    <p>Hint: Pick your move and show your prowess!</p>
+    <p class="render-score">Hint: Pick your move and show your prowess!</p>
     <div class="choices-div">
       <img
         onclick=" yourMove = 'Rock'; fightResult(yourMove); scoreStorage();"
@@ -26,7 +25,7 @@
 
       <img
         onclick=" yourMove = 'Paper'; fightResult(yourMove); scoreStorage();"
-        src="Images-Folder/scissorFrame.png"
+        src="Images-Folder/paperFrame.png"
         alt="Paper Move"
         class="choices"
       />
@@ -43,7 +42,8 @@
         points.Computer = 0;
         points.Tie = 0;
         points.User = 0;
-        localStorage.removeItem('scoreTotal')
+        localStorage.removeItem('scoreTotal');
+        renderScore('reset', 'reset', 'reset');
         scoreStorage();
       "
       class="reset-button"
@@ -51,7 +51,6 @@
       Reset Button
     </button>
 
-    <script src="JS-Javascript-Folder/rock-paper-scissor.js">
-    </script>
+    <script src="JS-Javascript-Folder/rock-paper-scissor.js"></script>
   </body>
 </html>
