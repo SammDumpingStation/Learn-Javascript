@@ -7,14 +7,17 @@
     <title>Rock Paper Scissors Game</title>
   </head>
   <body>
+ <!-- ------------------------------------------------------------------------------------>
     <h1>Rock Paper Scissors</h1>
+ <!-- ------------------------------------------------------------------------------------>
     <h3>Defeat me!</h3>
+ <!-- ------------------------------------------------------------------------------------>
     <div>
       <img class="user-image" src="" alt="" />
       <img class="computer-image" src="Images-Folder/userImage.png" alt="" />
     </div>
-
     <p class="render-score">Hint: Pick your move and show your prowess!</p>
+ <!-- ------------------------------------------------------------------------------------>
     <div class="choices-div">
       <img
         onclick=" yourMove = 'Rock'; fightResult(yourMove); scoreStorage();"
@@ -37,6 +40,7 @@
         class="choices"
       />
     </div>
+ <!-- ------------------------------------------------------------------------------------>
     <button
       onclick="
         points.Computer = 0;
@@ -44,32 +48,60 @@
         points.User = 0;
         localStorage.removeItem('scoreTotal');
         renderScore('reset', 'reset', 'reset');
-        renderLog('Reset');
+        renderLog();
         scoreStorage();
       "
       class="reset-button"
     >
       Reset Button
     </button>
-
+ <!-- ------------------------------------------------------------------------------------>
     <div class="history-container">
       <h2>History Log</h2>
+ <!-- ------------------------------------------------------------------------------------>
       <div class="logs">
+ <!-- ------------------------------------------------------------------------------------>
         <div class="log-titles">
-          <ul>
-            <li>User's Log</li>
-            <li>Computer's Log</li>
-            <li>Results</li>
-          </ul>
+          <div class="title-img-text-container">
+            <img
+              src="Images-Folder/bot-icon.png"
+              alt=""
+              class="img-icon-title"
+            />
+            <p>User</p>
+          </div>
+ <!-- ------------------------------------------------------------------------------------>
+          <div class="title-img-text-container">
+            <img src="Images-Folder/result.png" alt="" class="img-icon-title" />
+            <p>Results</p>
+          </div>
+ <!-- ------------------------------------------------------------------------------------>
+          <div class="title-img-text-container">
+            <img
+              src="Images-Folder/user-icon.png"
+              alt=""
+              class="img-icon-title"
+            />
+            <p>Computer</p>
+          </div>
+ <!-- ------------------------------------------------------------------------------------>
         </div>
+ <!-- ------------------------------------------------------------------------------------>
         <div class="log-div">
-          <div class="log-container">
-            <p class="user-p"></p>
-            <p class="computer-p"></p>
-            <p class="result-p"></p>
+
+          <div class="log-img-container user">
+
+          </div>
+
+          <div class="log-img-container result">
+
+          </div>
+
+          <div class="log-img-container computer">
           </div>
         </div>
       </div>
+ <!-- ------------------------------------------------------------------------------------>
       <div><button class="clear-history-button">Clear History</button></div>
     </div>
 

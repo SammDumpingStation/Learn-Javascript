@@ -60,7 +60,7 @@ function fightResult(userMove) {
   }
   renderScore(userMove, computerPick, result);
   addingArray("Start");
-  renderLog("Start");
+  renderLog();
 }
 
 function renderScore(user, comp, output) {
@@ -75,15 +75,51 @@ function renderScore(user, comp, output) {
     message = `User: ${user}. Computer: ${comp}. Result: ${output}`;
     userArray.unshift(message);
   }
-}
 
-function addingArray(action) {
-  if (action === "Reset") {
-  } else {
+  if (user === 'Rock') {
+    document.querySelector(".user").innerHTML =`<img src="Images-Folder/rockFrame.png" alt="rock" class="log-img user-img" /> <p class="user-description">${user}</p>`;
+    }
+    else if (user === 'Paper') {
+    document.querySelector(".user").innerHTML =`<img src="Images-Folder/paperFrame.png" alt="rock" class="log-img user-img" /> <p class="user-description">${user}</p>`;
+    }
+    else if (user === 'Scissor') {
+    document.querySelector(".user").innerHTML =`<img src="Images-Folder/scissorFrame.png" alt="rock" class="log-img user-img" /> <p class="user-description">${user}</p>`;
+    }
+    checksComputerMove(comp);
+    checksResult(output);
+  }
+
+function checksComputerMove(comp) {
+  if (comp === "Rock") {
+    document.querySelector(
+      ".computer"
+    ).innerHTML = `<img src="Images-Folder/rockFrame.png" alt="rock" class="log-img computer-img" /> <p class="computer-description">${comp}</p>`;
+  } else if (comp === "Paper") {
+    document.querySelector(
+      ".computer"
+    ).innerHTML = `<img src="Images-Folder/paperFrame.png" alt="paper" class="log-img computer-img" /> <p class="computer-description">${comp}</p>`;
+  } else if (comp === "Scissors") {
+    document.querySelector(
+      ".computer"
+    ).innerHTML = `<img src="Images-Folder/scissorFrame.png" alt="scissor" class="log-img computer-img" /> <p class="computer-description">${comp}</p>`;
   }
 }
 
-function renderLog(status) {
+function checksResult(output) {
+  if (output === 'You Win') {
+    document.querySelector(".result").innerHTML = `<img src="Images-Folder/win.png" alt="" class="log-img win-img" /> <p class="result-description">${output}</p>`;    
+  }
+  else if (output === 'You lose') {
+    document.querySelector(
+      ".result"
+    ).innerHTML = `<img src="Images-Folder/lose.png" alt="" class="log-img lose-img" /> <p class="result-description">${output}</p>`;    
+  }
+  else if (output === 'Tie') {
+    document.querySelector(".result").innerHTML = `<img src="Images-Folder/tie.png" alt="" class="log-img tie-img" /> <p class="result-description">${output}</p>`;    
+  }
+}
+
+function renderLog() {
   let logHTML = "";
   for (let i = 0; i < userArray.length; i++) {
     const logString = userArray[i];
