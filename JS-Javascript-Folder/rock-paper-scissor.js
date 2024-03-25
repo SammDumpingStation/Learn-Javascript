@@ -1,7 +1,6 @@
 let yourMove = "";
 let points = JSON.parse(localStorage.getItem("scoreTotal"));
-
-console.log(points);
+const historyArray = [];
 
 // For dark mode later -->
 // const html = document.querySelector("html");
@@ -46,7 +45,7 @@ function fightResult(userMove) {
     } else if (userMove === "Paper") {
       result = "You lose";
     } else if (userMove === "Scissors") {
-      result = "Tie";
+      result = "It's a tie";
     }
   }
 
@@ -58,13 +57,27 @@ function fightResult(userMove) {
     points.Tie++;
   }
   renderScore(userMove, computerPick, result);
+  let historyIntoResult = `You: ${userMove}. Computer: ${computerPick}. Result: ${result}`;
+  historyArray.push(historyIntoResult);
+  console.log(historyArray);
+  renderHistory();
 }
 
 function renderScore(user, comp, output) {
   let render = document.querySelector(".render-score");
-  if (user ==='reset' || comp === 'reset' || output === 'reset') {
+  if (user === "reset" || comp === "reset" || output === "reset") {
     render.innerHTML = `Scores have been reseted to 0! Start picking a move again!`;
   } else {
     render.innerHTML = `You picked ${user} while Computer picked ${comp}. ${output}. User: ${points.User} Computer: ${points.Computer} Tie: ${points.Tie}.`;
   }
+}
+
+function renderHistory() {
+   let historyHTML = "";
+    for (let i = 0; i < historyArray.length; i++) {
+      let historyString = historyArray[i];
+      let historyElement = `<p>${historyString}</p>`;
+      historyHTML += historyElement;
+    }
+  document.querySelector(".history-logs-p").innerHTML = historyHTML;
 }
