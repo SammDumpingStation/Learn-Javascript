@@ -44,6 +44,7 @@
         points.User = 0;
         localStorage.removeItem('scoreTotal');
         renderScore('reset', 'reset', 'reset');
+        renderLog('Reset');
         scoreStorage();
       "
       class="reset-button"
@@ -53,8 +54,23 @@
 
     <div class="history-container">
       <h2>History Log</h2>
-      <div class="history-logs-p">
+      <div class="logs">
+        <div class="log-titles">
+          <ul>
+            <li>User's Log</li>
+            <li>Computer's Log</li>
+            <li>Results</li>
+          </ul>
+        </div>
+        <div class="log-div">
+          <div class="log-container">
+            <p class="user-p"></p>
+            <p class="computer-p"></p>
+            <p class="result-p"></p>
+          </div>
+        </div>
       </div>
+      <div><button class="clear-history-button">Clear History</button></div>
     </div>
 
     <script src="JS-Javascript-Folder/rock-paper-scissor.js"></script>

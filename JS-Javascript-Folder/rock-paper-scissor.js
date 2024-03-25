@@ -1,6 +1,8 @@
 let yourMove = "";
 let points = JSON.parse(localStorage.getItem("scoreTotal"));
-const historyArray = [];
+const userArray = [];
+const compArray = [];
+const resultArray = [];
 
 // For dark mode later -->
 // const html = document.querySelector("html");
@@ -57,27 +59,37 @@ function fightResult(userMove) {
     points.Tie++;
   }
   renderScore(userMove, computerPick, result);
-  let historyIntoResult = `You: ${userMove}. Computer: ${computerPick}. Result: ${result}`;
-  historyArray.push(historyIntoResult);
-  console.log(historyArray);
-  renderHistory();
+  addingArray("Start");
+  renderLog("Start");
 }
 
 function renderScore(user, comp, output) {
   let render = document.querySelector(".render-score");
+  let message = "";
   if (user === "reset" || comp === "reset" || output === "reset") {
     render.innerHTML = `Scores have been reseted to 0! Start picking a move again!`;
+    message = `<p class="rendered-log">Scores have been reseted to 0!</p>`;
+    userArray.unshift(message);
   } else {
     render.innerHTML = `You picked ${user} while Computer picked ${comp}. ${output}. User: ${points.User} Computer: ${points.Computer} Tie: ${points.Tie}.`;
+    message = `User: ${user}. Computer: ${comp}. Result: ${output}`;
+    userArray.unshift(message);
   }
 }
 
-function renderHistory() {
-   let historyHTML = "";
-    for (let i = 0; i < historyArray.length; i++) {
-      let historyString = historyArray[i];
-      let historyElement = `<p>${historyString}</p>`;
-      historyHTML += historyElement;
-    }
-  document.querySelector(".history-logs-p").innerHTML = historyHTML;
+function addingArray(action) {
+  if (action === "Reset") {
+  } else {
+  }
+}
+
+function renderLog(status) {
+  let logHTML = "";
+  for (let i = 0; i < userArray.length; i++) {
+    const logString = userArray[i];
+    const logElement = `<p class="rendered-log">${logString}</p>`;
+    logHTML += logElement;
+  }
+  // document.querySelector(".history-logs-p").innerHTML = logHTML;
+  console.log((document.querySelector(".log-div").innerHTML = logHTML));
 }
