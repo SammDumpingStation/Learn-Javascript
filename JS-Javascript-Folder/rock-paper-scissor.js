@@ -160,11 +160,11 @@ function renderHistoryLog(action) {
       ).innerHTML = `<div class="history-reset"><p>The History has been Reseted!</p><div>`;
   }
   else {
-    for (let i = 0; i < historyLogArray.length; i++) {
-      const logString = historyLogArray[i];
+    historyLogArray.forEach(function (historyLogArray) {
+      const logString = historyLogArray;
       const logElement = logString;
       logHTML += logElement;
-    }
+    })
     document.querySelector(".log-container").innerHTML = logHTML;
   }
 
