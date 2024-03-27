@@ -84,18 +84,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 300px;
   margin-bottom: 500px;
 }
 
 .logs {
-  /* box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px; */
   border: 10px solid #d9bbec;
   border-radius: 10px;
   width: 500px;
-  height: 700px;
+  height: 720px;
   padding: 20px 50px;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .log-titles {
@@ -130,6 +128,9 @@ body {
   margin-bottom: 10px;
   height: 70px;
   width: 70px;
+}
+
+.log-container {
 }
 
 .log-div {

@@ -7,17 +7,13 @@
     <title>Rock Paper Scissors Game</title>
   </head>
   <body>
- <!-- ------------------------------------------------------------------------------------>
     <h1>Rock Paper Scissors</h1>
- <!-- ------------------------------------------------------------------------------------>
     <h3>Defeat me!</h3>
- <!-- ------------------------------------------------------------------------------------>
     <div>
       <img class="user-image" src="" alt="" />
       <img class="computer-image" src="Images-Folder/userImage.png" alt="" />
     </div>
     <p class="render-score">Hint: Pick your move and show your prowess!</p>
- <!-- ------------------------------------------------------------------------------------>
     <div class="choices-div">
       <img
         onclick=" yourMove = 'Rock'; fightResult(yourMove); scoreStorage();"
@@ -40,7 +36,6 @@
         class="choices"
       />
     </div>
- <!-- ------------------------------------------------------------------------------------>
     <button
       onclick="
         points.Computer = 0;
@@ -55,12 +50,9 @@
     >
       Reset Button
     </button>
- <!-- ------------------------------------------------------------------------------------>
     <div class="history-container">
       <h2>History Log</h2>
- <!-- ------------------------------------------------------------------------------------>
       <div class="logs">
- <!-- ------------------------------------------------------------------------------------>
         <div class="log-titles">
           <div class="title-img-text-container">
             <img
@@ -70,12 +62,10 @@
             />
             <p>User</p>
           </div>
- <!-- ------------------------------------------------------------------------------------>
           <div class="title-img-text-container">
             <img src="Images-Folder/result.png" alt="" class="img-icon-title" />
             <p>Results</p>
           </div>
- <!-- ------------------------------------------------------------------------------------>
           <div class="title-img-text-container">
             <img
               src="Images-Folder/user-icon.png"
@@ -84,24 +74,11 @@
             />
             <p>Computer</p>
           </div>
- <!-- ------------------------------------------------------------------------------------>
         </div>
- <!-- ------------------------------------------------------------------------------------>
-        <div class="log-div">
+        <div class="log-container">
 
-          <div class="log-img-container user">
-
-          </div>
-
-          <div class="log-img-container result">
-
-          </div>
-
-          <div class="log-img-container computer">
-          </div>
         </div>
       </div>
- <!-- ------------------------------------------------------------------------------------>
       <div><button class="clear-history-button">Clear History</button></div>
     </div>
 
