@@ -6,6 +6,7 @@ let points = JSON.parse(localStorage.getItem("scoreTotal")) || {
 };
 const winLoseDisplay = [];
 const historyLogArray = [];
+let hasResetShown = false;
 
 // For dark mode later -->
 // const html = document.querySelector("html");
@@ -20,30 +21,37 @@ function scoreStorage() {
 
 // Is the main function that compares what the computer picks and the user pick then shows the result
 function fightResult(userMove) {
-  let compMove = Math.random();
-  let computerPick = "";
-  let result = "";
+  if (userMove === "Reset") {
+    renderHistoryLog();
+    console.log(historyLogArray);
+    hasResetShown = true;
+  } else {
+    hasResetShown = false;
+    let compMove = Math.random();
+    let computerPick = "";
+    let result = "";
 
-  // using Math.random, we will determine the move of the computer randomly
-  if (compMove >= 0 && compMove <= 1 / 3) {
-    computerPick = "Rock";
-  } else if (compMove > 1 / 3 && compMove <= 2 / 3) {
-    computerPick = "Paper";
-  } else if (compMove > 2 / 3 && compMove <= 1) {
-    computerPick = "Scissors";
+    // using Math.random, we will determine the move of the computer randomly
+    if (compMove >= 0 && compMove <= 1 / 3) {
+      computerPick = "Rock";
+    } else if (compMove > 1 / 3 && compMove <= 2 / 3) {
+      computerPick = "Paper";
+    } else if (compMove > 2 / 3 && compMove <= 1) {
+      computerPick = "Scissors";
+    }
+
+    result = winOrLose(computerPick, userMove);
+
+    if (result === "You Win") {
+      points.User++;
+    } else if (result === "You Lose") {
+      points.Computer++;
+    } else if (result === "Tie") {
+      points.Tie++;
+    }
+    renderScore(userMove, computerPick, result);
+    renderHistoryLog();
   }
-
-  result = winOrLose(computerPick, userMove);
-
-  if (result === "You Win") {
-    points.User++;
-  } else if (result === "You Lose") {
-    points.Computer++;
-  } else if (result === "Tie") {
-    points.Tie++;
-  }
-  renderScore(userMove, computerPick, result);
-  renderHistoryLog();
 }
 
 // This function will compare what the user picks to what the computer picks in the game and returns the result as a string
@@ -84,23 +92,26 @@ function renderScore(user, comp, output) {
   let checkedComputerMove = "";
   let checkedResult = "";
   let divInsideHistoryLog = "";
-  if (user === "reset" || comp === "reset" || output === "reset") {
-    render.innerHTML = `Scores have been reseted to 0! Start picking a move again!`;
-    message = `<p class="rendered-log">Scores have been reseted to 0!</p>`;
-    divInsideHistoryLog = `<div class="log-div display-reset">${message}</div>`;
-    winLoseDisplay.unshift(message);
+  if (user === "reset" && comp === "reset" && output === "reset") {
+    if (!hasResetShown) {
+      render.innerHTML = `Scores have been reseted to 0! Start picking a move again!`;
+      message = `<p class="rendered-log">Scores have been reseted to 0!</p>`;
+      divInsideHistoryLog = `<div class="log-div display-reset">${message}</div>`;
+      winLoseDisplay.unshift(message);
+      historyLogArray.unshift(divInsideHistoryLog); 
+    } else {
+      return;
+    }
   } else {
     render.innerHTML = `You picked ${user} while Computer picked ${comp}. ${output}. User: ${points.User} Computer: ${points.Computer} Tie: ${points.Tie}.`;
     message = `User: ${user}. Computer: ${comp}. Result: ${output}`;
     winLoseDisplay.unshift(message);
-
     checkedUserMove = checkUserMove(user);
     checkedResult = checksResult(output);
     checkedComputerMove = checksComputerMove(comp);
-
     divInsideHistoryLog = `<div class="log-div display-result"> <div class="log-img-container user">${checkedUserMove}</div><div class="log-img-container result">${checkedResult}</div><div class="log-img-container computer">${checkedComputerMove}</div></div>`;
+    historyLogArray.unshift(divInsideHistoryLog);
   }
-  historyLogArray.unshift(divInsideHistoryLog);
 }
 
 function checkUserMove(user) {

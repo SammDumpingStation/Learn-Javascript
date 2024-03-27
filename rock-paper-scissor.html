@@ -6,13 +6,19 @@
     <link rel="stylesheet" href="CSS-Folder/rock-paper-scissor.css" />
     <!-- Font Links  -->
     <!-- Anton Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
     <!-- Roboto Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Title -->
     <title>Rock Paper Scissors Game</title>
   </head>
@@ -29,7 +35,7 @@
       <p class="render-score">Hint: Pick your move and show your prowess!</p>
       <div class="choices-div">
         <img
-          onclick=" yourMove = 'Rock'; fightResult(yourMove); scoreStorage();"
+          onclick=" yourMove = 'Rock'; fightResult(yourMove); scoreStorage(); "
           src="Images-Folder/rockFrame.png"
           alt="Rock Move"
           class="choices"
@@ -56,7 +62,7 @@
         points.User = 0;
         localStorage.removeItem('scoreTotal');
         renderScore('reset', 'reset', 'reset');
-        renderHistoryLog();
+        fightResult('Reset');
         scoreStorage();
       "
         class="reset-button"
@@ -99,3 +105,62 @@
     <script src="JS-Javascript-Folder/rock-paper-scissor.js"></script>
   </body>
 </html>
+
+
+'
+<div class="log-div display-result">
+  <div class="log-img-container user"></div>
+  <div class="log-img-container result"></div>
+  <div class="log-img-container computer"></div>
+</div>
+', '
+<div class="log-div display-reset">
+  <p class="rendered-log">Scores have been reseted to 0!</p>
+</div>
+', '
+<div class="log-div display-result">
+  <div class="log-img-container user">
+    <img
+      src="Images-Folder/paperFrame.png"
+      alt="rock"
+      class="log-img user-img"
+    />
+    <p class="description">Paper</p>
+  </div>
+  <div class="log-img-container result">
+    <img src="Images-Folder/win.png" alt="" class="log-img win-img" />
+    <p class="description">You Win</p>
+  </div>
+  <div class="log-img-container computer">
+    <img
+      src="Images-Folder/rockFrame.png"
+      alt="rock"
+      class="log-img computer-img"
+    />
+    <p class="description">Rock</p>
+  </div>
+</div>
+', '
+<div class="log-div display-result">
+  <div class="log-img-container user">
+    <img
+      src="Images-Folder/rockFrame.png"
+      alt="rock"
+      class="log-img user-img"
+    />
+    <p class="description">Rock</p>
+  </div>
+  <div class="log-img-container result">
+    <img src="Images-Folder/lose.png" alt="" class="log-img lose-img" />
+    <p class="description">You Lose</p>
+  </div>
+  <div class="log-img-container computer">
+    <img
+      src="Images-Folder/paperFrame.png"
+      alt="paper"
+      class="log-img computer-img"
+    />
+    <p class="description">Paper</p>
+  </div>
+</div>
+'
