@@ -9,20 +9,36 @@
 html {
   font-size: 16px;
   font-family: "Roboto";
+  font-weight: 400;
   background-color: #f9f4f4;
 }
 
-body {
-  margin-top: 200px;
+body,
+.the-main-game-rps,
+.choices-div,
+.history-container,
+.log-titles,
+.title-img-text-container,
+.log-img-container,
+.log-div {
   display: flex;
+}
+
+.the-main-game-rps,
+.history-container,
+.title-img-text-container,
+.log-img-container {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 50px;
+}
+
+body {
+  gap: 100px;
+  padding: 50px;
 }
 
 .choices-div {
-  display: flex;
   gap: 30px;
   margin-bottom: 40px;
 }
@@ -79,14 +95,6 @@ body {
   transition-delay: -10s;
 }
 
-.history-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 500px;
-}
-
 .logs {
   border: 10px solid #d9bbec;
   border-radius: 10px;
@@ -97,7 +105,6 @@ body {
 }
 
 .log-titles {
-  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -111,14 +118,6 @@ body {
   font-size: 30px;
 }
 
-.title-img-text-container,
-.log-img-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .title-img-text-container p {
   font-weight: bold;
   font-size: 18px;
@@ -130,24 +129,37 @@ body {
   width: 70px;
 }
 
-.log-container {
-}
-
 .log-div {
-  height: 80px;
+  height: 90px;
   margin-top: 30px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
   border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  text-align: center;
+}
+
+.display-result {
+  justify-content: space-between;
+}
+
+.display-reset {
+  justify-content: center;
 }
 
 .log-img {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
 }
 
 .computer-img {
   transform: scaleX(-1);
+}
+
+.description {
+  margin-top: 10px;
+  font-weight: lighter;
+}
+
+.rendered-log {
+  text-align: center;
 }
