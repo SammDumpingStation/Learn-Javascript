@@ -100,7 +100,7 @@
         <div class="log-container"></div>
       </div>
       <div>
-        <button onclick="renderHistoryLog('Reset');" class="clear-history-button">
+        <button onclick="renderHistoryLog('Reset'); historyLogArray.length = 0; historyLogStorage();" class="clear-history-button">
           Clear History
         </button>
       </div>

@@ -5,15 +5,19 @@ let points = JSON.parse(localStorage.getItem("scoreTotal")) || {
   User: 0,
 };
 const winLoseDisplay = [];
-const historyLogArray = [];
+const historyLogArray = JSON.parse(localStorage.getItem("logHistoryStorage")) || [];
 let hasResetShown = false;
+
+renderHistoryLog();
 
 // For dark mode later -->
 // const html = document.querySelector("html");
 // html.style.backgroundColor = "black";
 
 // Functions Section
-
+function historyLogStorage() {
+  localStorage.setItem("logHistoryStorage", JSON.stringify(historyLogArray));
+}
 // This will store the scores accumulated that is in the points variable and put it into local Storage (as permanent storage)
 function scoreStorage() {
   localStorage.setItem("scoreTotal", JSON.stringify(points));
@@ -23,7 +27,6 @@ function scoreStorage() {
 function fightResult(userMove) {
   if (userMove === "Reset") {
     renderHistoryLog();
-    console.log(historyLogArray);
     hasResetShown = true;
   } else {
     hasResetShown = false;
@@ -98,7 +101,8 @@ function renderScore(user, comp, output) {
       message = `<p class="rendered-log">Scores have been reseted to 0!</p>`;
       divInsideHistoryLog = `<div class="log-div display-reset">${message}</div>`;
       winLoseDisplay.unshift(message);
-      historyLogArray.unshift(divInsideHistoryLog); 
+      historyLogArray.unshift(divInsideHistoryLog);
+      historyLogStorage();
     } else {
       return;
     }
@@ -111,6 +115,7 @@ function renderScore(user, comp, output) {
     checkedComputerMove = checksComputerMove(comp);
     divInsideHistoryLog = `<div class="log-div display-result"> <div class="log-img-container user">${checkedUserMove}</div><div class="log-img-container result">${checkedResult}</div><div class="log-img-container computer">${checkedComputerMove}</div></div>`;
     historyLogArray.unshift(divInsideHistoryLog);
+    historyLogStorage();
   }
 }
 
@@ -153,20 +158,16 @@ function checksResult(output) {
 
 function renderHistoryLog(action) {
   let logHTML = "";
-  if (action === 'Reset') {
-      historyLogArray.length = 0;
-      document.querySelector(
-        ".log-container"
-      ).innerHTML = `<div class="history-reset"><p>The History has been Reseted!</p><div>`;
-  }
-  else {
+  if (action === "Reset") {
+    document.querySelector(
+      ".log-container"
+    ).innerHTML = `<div class="history-reset"><p>The History has been Reseted!</p><div>`;
+  } else {
     historyLogArray.forEach(function (historyLogArray) {
       const logString = historyLogArray;
       const logElement = logString;
       logHTML += logElement;
-    })
+    });
     document.querySelector(".log-container").innerHTML = logHTML;
   }
-
 }
-
