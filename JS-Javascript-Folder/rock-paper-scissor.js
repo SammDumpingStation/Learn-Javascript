@@ -151,17 +151,22 @@ function checksResult(output) {
   return checkedResult;
 }
 
-function renderHistoryLog() {
+function renderHistoryLog(action) {
   let logHTML = "";
-
-  for (let i = 0; i < historyLogArray.length; i++) {
-    const logString = historyLogArray[i];
-    const logElement = logString;
-    logHTML += logElement;
+  if (action === 'Reset') {
+      historyLogArray.length = 0;
+      document.querySelector(
+        ".log-container"
+      ).innerHTML = `<div class="history-reset"><p>The History has been Reseted!</p><div>`;
   }
-  document.querySelector(".log-container").innerHTML = logHTML;
+  else {
+    for (let i = 0; i < historyLogArray.length; i++) {
+      const logString = historyLogArray[i];
+      const logElement = logString;
+      logHTML += logElement;
+    }
+    document.querySelector(".log-container").innerHTML = logHTML;
+  }
+
 }
 
-function clearHistory() {
-  historyLogArray.length = 0;
-}

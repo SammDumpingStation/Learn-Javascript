@@ -101,7 +101,7 @@ body {
   border: 10px solid #d9bbec;
   border-radius: 10px;
   width: 500px;
-  height: 720px;
+  height: 750px;
   padding: 20px 50px;
   overflow-y: scroll;
 }
@@ -118,6 +118,10 @@ body {
   align-items: center;
   list-style: none;
   font-size: 30px;
+}
+
+.log-container {
+  height: 80%;
 }
 
 .title-img-text-container p {
@@ -138,6 +142,13 @@ body {
   border-radius: 10px;
   align-items: center;
   text-align: center;
+}
+
+.history-reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .display-result {
