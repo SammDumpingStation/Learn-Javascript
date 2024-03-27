@@ -99,68 +99,13 @@
         </div>
         <div class="log-container"></div>
       </div>
-      <div><button class="clear-history-button">Clear History</button></div>
+      <div>
+        <button onclick="clearHistory(); renderHistoryLog();" class="clear-history-button">
+          Clear History
+        </button>
+      </div>
     </div>
 
     <script src="JS-Javascript-Folder/rock-paper-scissor.js"></script>
   </body>
 </html>
-
-
-'
-<div class="log-div display-result">
-  <div class="log-img-container user"></div>
-  <div class="log-img-container result"></div>
-  <div class="log-img-container computer"></div>
-</div>
-', '
-<div class="log-div display-reset">
-  <p class="rendered-log">Scores have been reseted to 0!</p>
-</div>
-', '
-<div class="log-div display-result">
-  <div class="log-img-container user">
-    <img
-      src="Images-Folder/paperFrame.png"
-      alt="rock"
-      class="log-img user-img"
-    />
-    <p class="description">Paper</p>
-  </div>
-  <div class="log-img-container result">
-    <img src="Images-Folder/win.png" alt="" class="log-img win-img" />
-    <p class="description">You Win</p>
-  </div>
-  <div class="log-img-container computer">
-    <img
-      src="Images-Folder/rockFrame.png"
-      alt="rock"
-      class="log-img computer-img"
-    />
-    <p class="description">Rock</p>
-  </div>
-</div>
-', '
-<div class="log-div display-result">
-  <div class="log-img-container user">
-    <img
-      src="Images-Folder/rockFrame.png"
-      alt="rock"
-      class="log-img user-img"
-    />
-    <p class="description">Rock</p>
-  </div>
-  <div class="log-img-container result">
-    <img src="Images-Folder/lose.png" alt="" class="log-img lose-img" />
-    <p class="description">You Lose</p>
-  </div>
-  <div class="log-img-container computer">
-    <img
-      src="Images-Folder/paperFrame.png"
-      alt="paper"
-      class="log-img computer-img"
-    />
-    <p class="description">Paper</p>
-  </div>
-</div>
-'

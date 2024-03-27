@@ -161,3 +161,7 @@ function renderHistoryLog() {
   }
   document.querySelector(".log-container").innerHTML = logHTML;
 }
+
+function clearHistory() {
+  historyLogArray.length = 0;
+}

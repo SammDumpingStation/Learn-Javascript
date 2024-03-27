@@ -35,12 +35,11 @@ body,
 
 body {
   gap: 100px;
-  padding: 50px;
+  padding: 50px 50px 500px 50px;
 }
 
 .choices-div {
   gap: 30px;
-  margin-bottom: 40px;
 }
 
 .choices {
@@ -72,25 +71,28 @@ body {
   transform: scaleX(-1);
 }
 
-.reset-button {
-  border: 2px solid #d9bbec;
-  padding: 20px;
+.reset-button,
+.clear-history-button {
+  border: 2px solid #ed3d3d;
+  padding: 10px;
   color: #f9f4f4;
-  background-color: #d9bbec;
-  border-radius: 20px;
-  font-size: 25px;
+  background-color: #ed3d3d;
+  border-radius: 30px;
+  font-size: 20px;
   font-weight: bolder;
+  margin-top: 20px;
   transition: all 0.3s;
 }
 
-.reset-button:hover {
+.reset-button:hover,
+.clear-history-button:hover {
   background-color: transparent;
-  color: #d9bbec;
-  border: 2px solid #d9bbec;
-  transform: translateY(-10px);
+  color: #ed3d3d;
+  transform: translateY(-5px);
 }
 
-.reset-button:active {
+.reset-button:active,
+.clear-history-button:active {
   transform: translateY(0px);
   transition-delay: -10s;
 }
