@@ -22,24 +22,12 @@ let hasResetShown = false;
 renderHistoryLog();
 
 // Making the buttons and/or images to function when cicked using event listener
-document
-  .querySelector(".rockMove")
-  .addEventListener("click", () => checkAndRenderMoves("Rock"));
-document
-  .querySelector(".paperMove")
-  .addEventListener("click", () => checkAndRenderMoves("Paper"));
-document
-  .querySelector(".scissorMove")
-  .addEventListener("click", () => checkAndRenderMoves("Scissors"));
-document
-  .querySelector(".reset-button")
-  .addEventListener("click", () => resetButton());
-document
-  .querySelector(".clear-history-button")
-  .addEventListener("click", () => clearHistoryButton());
-document
-  .querySelector(".auto-play-button")
-  .addEventListener("click", () => autoPlayButton());
+clickEventListener(".rockMove", () => checkAndRenderMoves("Rock"));
+clickEventListener(".paperMove", () => checkAndRenderMoves("Paper"));
+clickEventListener(".scissorMove", () => checkAndRenderMoves("Scissors"));
+clickEventListener(".reset-button", resetButton);
+clickEventListener(".auto-play-button", autoPlayButton);
+clickEventListener(".clear-history-button", clearHistoryButton);
 
 // For dark mode later -->
 // const html = document.querySelector("html");
@@ -57,6 +45,13 @@ function scoreStorage() {
 }
 
 //function specifically for addEventListener to make the buttons work and do things they are supposed to do
+
+//using document listener to implement the changes in the page
+function clickEventListener(htmlCLass, usedFunction) {
+  document
+    .querySelector(htmlCLass)
+    .addEventListener("click", () => usedFunction());
+}
 
 //for the Rock, Paper, Scissor images to take a pick and display into history log
 function checkAndRenderMoves(moves) {
