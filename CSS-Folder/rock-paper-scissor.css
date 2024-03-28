@@ -71,8 +71,12 @@ body {
   transform: scaleX(-1);
 }
 
-.reset-button,
-.clear-history-button {
+.button-container {
+  display: flex;
+  gap: 30px;
+}
+
+.buttons {
   border: 2px solid #ed3d3d;
   padding: 10px;
   color: #f9f4f4;
@@ -84,15 +88,13 @@ body {
   transition: all 0.3s;
 }
 
-.reset-button:hover,
-.clear-history-button:hover {
+.buttons:hover {
   background-color: transparent;
   color: #ed3d3d;
   transform: translateY(-5px);
 }
 
-.reset-button:active,
-.clear-history-button:active {
+.buttons:active {
   transform: translateY(0px);
   transition-delay: -10s;
 }

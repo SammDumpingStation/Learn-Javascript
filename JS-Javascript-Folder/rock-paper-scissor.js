@@ -1,20 +1,53 @@
-let yourMove = "";
+let yourMove = ""; //Variable for moves picked by the user
+
+//gets the score of the user and computer that is integrated inside the local Storage as permanent
 let points = JSON.parse(localStorage.getItem("scoreTotal")) || {
   Computer: 0,
   Tie: 0,
   User: 0,
 };
+
+//gets the div stored in the array and store it into the local Storage as permanent
+const historyLogArray =
+  JSON.parse(localStorage.getItem("logHistoryStorage")) || [];
+
 const winLoseDisplay = [];
-const historyLogArray = JSON.parse(localStorage.getItem("logHistoryStorage")) || [];
+let autoPlayID;
+
+//boolean to check if the reset button has been clicked before or not to not make it repeat itself over and over again
+let isAutoplaying = false;
 let hasResetShown = false;
 
+//calling this function so that when the local storage has something in it, it will display it to the history log even if the page is refreshed
 renderHistoryLog();
+
+// Making the buttons and/or images to function when cicked using event listener
+document
+  .querySelector(".rockMove")
+  .addEventListener("click", () => checkAndRenderMoves("Rock"));
+document
+  .querySelector(".paperMove")
+  .addEventListener("click", () => checkAndRenderMoves("Paper"));
+document
+  .querySelector(".scissorMove")
+  .addEventListener("click", () => checkAndRenderMoves("Scissors"));
+document
+  .querySelector(".reset-button")
+  .addEventListener("click", () => resetButton());
+document
+  .querySelector(".clear-history-button")
+  .addEventListener("click", () => clearHistoryButton());
+document
+  .querySelector(".auto-play-button")
+  .addEventListener("click", () => autoPlayButton());
 
 // For dark mode later -->
 // const html = document.querySelector("html");
 // html.style.backgroundColor = "black";
 
 // Functions Section
+
+//function to store the values put into the array and put it into local storage
 function historyLogStorage() {
   localStorage.setItem("logHistoryStorage", JSON.stringify(historyLogArray));
 }
@@ -23,26 +56,56 @@ function scoreStorage() {
   localStorage.setItem("scoreTotal", JSON.stringify(points));
 }
 
+//function specifically for addEventListener to make the buttons work and do things they are supposed to do
+
+//for the Rock, Paper, Scissor images to take a pick and display into history log
+function checkAndRenderMoves(moves) {
+  fightResult(moves);
+  scoreStorage();
+}
+
+//for the Reset Button functionality
+function resetButton() {
+  points.Computer = 0;
+  points.Tie = 0;
+  points.User = 0;
+  localStorage.removeItem("scoreTotal");
+  renderScore();
+  fightResult();
+  scoreStorage();
+}
+
+//for the Clear History functionality
+function clearHistoryButton() {
+  renderHistoryLog("Reset");
+  historyLogArray.length = 0;
+  localStorage.removeItem("logHistoryStorage");
+  historyLogStorage();
+}
+
+function autoPlayButton() {
+  if (!isAutoplaying) {
+    autoPlayID = setInterval(() => {
+      const userMove = computerMove();
+      fightResult(userMove);
+    }, 1000);
+    isAutoplaying = true;
+  } else {
+    clearInterval(autoPlayID);
+    isAutoplaying = false;
+  }
+}
+//until here
+
 // Is the main function that compares what the computer picks and the user pick then shows the result
-function fightResult(userMove) {
+function fightResult(userMove = "Reset") {
   if (userMove === "Reset") {
     renderHistoryLog();
     hasResetShown = true;
   } else {
     hasResetShown = false;
-    let compMove = Math.random();
-    let computerPick = "";
+    let computerPick = computerMove();
     let result = "";
-
-    // using Math.random, we will determine the move of the computer randomly
-    if (compMove >= 0 && compMove <= 1 / 3) {
-      computerPick = "Rock";
-    } else if (compMove > 1 / 3 && compMove <= 2 / 3) {
-      computerPick = "Paper";
-    } else if (compMove > 2 / 3 && compMove <= 1) {
-      computerPick = "Scissors";
-    }
-
     result = winOrLose(computerPick, userMove);
 
     if (result === "You Win") {
@@ -55,6 +118,19 @@ function fightResult(userMove) {
     renderScore(userMove, computerPick, result);
     renderHistoryLog();
   }
+}
+
+function computerMove() {
+  let compMove = Math.random();
+  // this if statement will expect a value from Math.random and we will determine the move of the computer randomly
+  if (compMove >= 0 && compMove <= 1 / 3) {
+    computerPick = "Rock";
+  } else if (compMove > 1 / 3 && compMove <= 2 / 3) {
+    computerPick = "Paper";
+  } else if (compMove > 2 / 3 && compMove <= 1) {
+    computerPick = "Scissors";
+  }
+  return computerPick;
 }
 
 // This function will compare what the user picks to what the computer picks in the game and returns the result as a string
@@ -88,7 +164,7 @@ function winOrLose(computerPick, userMove) {
   return result;
 }
 
-function renderScore(user, comp, output) {
+function renderScore(user = "reset", comp = "reset", output = "reset") {
   let render = document.querySelector(".render-score");
   let message = "";
   let checkedUserMove = "";
@@ -156,12 +232,16 @@ function checksResult(output) {
   return checkedResult;
 }
 
-function renderHistoryLog(action) {
+function renderHistoryLog(action = "Start") {
   let logHTML = "";
   if (action === "Reset") {
     document.querySelector(
       ".log-container"
     ).innerHTML = `<div class="history-reset"><p>The History has been Reseted!</p><div>`;
+  } else if (!historyLogArray.length) {
+    document.querySelector(
+      ".log-container"
+    ).innerHTML = `<div class="history-reset"><p>No Existing History, please pick a move</p><div>`;
   } else {
     historyLogArray.forEach(function (historyLogArray) {
       const logString = historyLogArray;
