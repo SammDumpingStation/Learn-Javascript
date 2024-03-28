@@ -1,5 +1,3 @@
-let yourMove = ""; //Variable for moves picked by the user
-
 //gets the score of the user and computer that is integrated inside the local Storage as permanent
 let points = JSON.parse(localStorage.getItem("scoreTotal")) || {
   Computer: 0,
@@ -163,33 +161,19 @@ function computerMove() {
 
 // This function will compare what the user picks to what the computer picks in the game and returns the result as a string
 function winOrLose(computerPick, userMove) {
-  let result = "";
-  // First if statement that will compare computerPick (Rock) with what the user will pick
-  if (computerPick === "Rock" && userMove === "Rock") {
-    result = "Tie";
-  } else if (computerPick === "Rock" && userMove === "Paper") {
-    result = "You Win";
-  } else if (computerPick === "Rock" && userMove === "Scissors") {
-    result = "You Lose";
+  if (computerPick === userMove) {
+    return 'Tie';
   }
-  // Second if statement that will compare computerPick (Paper) with what the user will pick
-  else if (computerPick === "Paper" && userMove === "Rock") {
-    result = "You Lose";
-  } else if (computerPick === "Paper" && userMove === "Paper") {
-    result = "Tie";
-  } else if (computerPick === "Paper" && userMove === "Scissors") {
-    result = "You Win";
+  else if (
+    (computerPick === "Rock" && userMove === "Scissors") ||
+    (computerPick === "Paper" && userMove === "Rock") ||
+    (computerPick === "Scissors" && userMove === "Paper")
+  ) { 
+    return 'You Lose';
   }
-  // Third if statement that will compare computerPick (Scissors) with what the user will pick
-  else if (computerPick === "Scissors" && userMove === "Rock") {
-    result = "You Win";
-  } else if (computerPick === "Scissors" && userMove === "Paper") {
-    result = "You Lose";
-  } else if (computerPick === "Scissors" && userMove === "Scissors") {
-    result = "Tie";
+  else {
+    return 'You Win';
   }
-  // The return statement will return a string You win, You lose and Tie
-  return result;
 }
 
 function renderScore(user = "reset", comp = "reset", output = "reset") {
