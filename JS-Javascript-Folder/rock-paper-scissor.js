@@ -26,7 +26,11 @@ clickEventListener(".rockMove", () => checkAndRenderMoves("Rock"));
 clickEventListener(".paperMove", () => checkAndRenderMoves("Paper"));
 clickEventListener(".scissorMove", () => checkAndRenderMoves("Scissors"));
 clickEventListener(".reset-button", resetButton);
-clickEventListener(".auto-play-button", autoPlayButton);
+clickEventListener(".auto-play-button", () => {
+  setTimeout(() => {
+    autoPlayButton();
+  }, 250);
+});
 clickEventListener(".clear-history-button", clearHistoryButton);
 
 // For dark mode later -->
@@ -47,16 +51,20 @@ function scoreStorage() {
 //function specifically for addEventListener to make the buttons work and do things they are supposed to do
 
 //using document listener to implement the changes in the page
-function clickEventListener(htmlCLass, usedFunction) {
+function clickEventListener(elementClass, usedFunction) {
   document
-    .querySelector(htmlCLass)
+    .querySelector(elementClass)
     .addEventListener("click", () => usedFunction());
 }
 
 //for the Rock, Paper, Scissor images to take a pick and display into history log
 function checkAndRenderMoves(moves) {
-  fightResult(moves);
-  scoreStorage();
+  if (isAutoplaying) {
+    return;
+  } else {
+    fightResult(moves);
+    scoreStorage();
+  }
 }
 
 //for the Reset Button functionality
@@ -78,6 +86,7 @@ function clearHistoryButton() {
   historyLogStorage();
 }
 
+//for the Auto Play button Functionality
 function autoPlayButton() {
   if (!isAutoplaying) {
     autoPlayID = setInterval(() => {
@@ -89,6 +98,30 @@ function autoPlayButton() {
     clearInterval(autoPlayID);
     isAutoplaying = false;
   }
+  autoPlayHoverChange();
+}
+
+function autoPlayHoverChange() {
+  let autoPlayChange = document.querySelector(".auto-play-button");
+  if (isAutoplaying) {
+    autoPlayChange.addEventListener("mouseover", () => {
+      setTimeout(() => {
+        autoPlayChange.innerHTML = "Pause?";
+      }, 100);
+    });
+  } else {
+    autoPlayChange.addEventListener("mouseover", () => {
+      setTimeout(() => {
+        autoPlayChange.innerHTML = "Continue?";
+      }, 100);
+    });
+  }
+  autoPlayChange.addEventListener("mouseout", () => {
+    setTimeout(() => {
+      autoPlayChange.innerHTML = "Auto Play";
+    }, 100);
+  });
+  autoPlayChange.innerHTML = "Auto Play";
 }
 //until here
 
