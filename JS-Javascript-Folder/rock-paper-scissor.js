@@ -19,6 +19,25 @@ let hasResetShown = false;
 //calling this function so that when the local storage has something in it, it will display it to the history log even if the page is refreshed
 renderHistoryLog();
 
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "r") {
+    checkAndRenderMoves("Rock");
+  } else if (event.key === "p") {
+    checkAndRenderMoves("Paper");
+  } else if (event.key === "s") {
+    checkAndRenderMoves("Scissors");
+  } else if (event.key === "z") {
+    resetButton();
+    renderScore();
+    renderHistoryLog();
+    hasResetShown = true;
+  } else if (event.key === "x") {
+    autoPlayButton();
+  } else if (event.key === "c") {
+    clearHistoryButton();
+  }
+});
+
 // Making the buttons and/or images to function when cicked using event listener
 clickEventListener(".rockMove", () => checkAndRenderMoves("Rock"));
 clickEventListener(".paperMove", () => checkAndRenderMoves("Paper"));
@@ -162,17 +181,15 @@ function computerMove() {
 // This function will compare what the user picks to what the computer picks in the game and returns the result as a string
 function winOrLose(computerPick, userMove) {
   if (computerPick === userMove) {
-    return 'Tie';
-  }
-  else if (
+    return "Tie";
+  } else if (
     (computerPick === "Rock" && userMove === "Scissors") ||
     (computerPick === "Paper" && userMove === "Rock") ||
     (computerPick === "Scissors" && userMove === "Paper")
-  ) { 
-    return 'You Lose';
-  }
-  else {
-    return 'You Win';
+  ) {
+    return "You Lose";
+  } else {
+    return "You Win";
   }
 }
 
