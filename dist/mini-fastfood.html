@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="output.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body class="h-full">
+    <div class="min-h-full">
+      <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <img
+                  class="h-8 w-8"
+                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                  alt="Your Company"
+                />
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                  <a
+                    href="all-js-projects.html"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-white"
+                    >Home</a
+                  >
+                  <a
+                    href="#"
+                    aria-current="page"
+                    class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                    >Mini Fastfood</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <header class="bg-white shadow">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            Mini Fastfood
+          </h1>
+        </div>
+      </header>
+
+      <!-- Main Content start here -->
+      <main class="px-40 pt-8 pb-[1000px]">
+        <div class="flex items-center gap-3 justify-between">
+          <h1 class="text-2xl font-bold">Soup</h1>
+          <p class="text-2xl">$ <span id="soup"></span></p>
+        </div>
+        <div class="flex items-center gap-3 justify-between">
+          <h1 class="text-2xl font-bold">Burger</h1>
+          <p class="text-2xl">$ <span id="burger"></span></p>
+        </div>
+        <div class="flex items-center gap-3 justify-between">
+          <h1 class="text-2xl font-bold">Ice Cream</h1>
+          <p class="text-2xl">$ <span id="ice-cream"></span></p>
+        </div>
+        <hr class="border-2 border-black" />
+
+        <div class="flex flex-col gap-4 pt-4">
+          <div class="flex items-center gap-3 justify-between">
+            <h1 class="text-2xl font-bold">Soup</h1>
+            <div
+              class="flex w-24 justify-between border border-black rounded-lg"
+            >
+              <button
+                class="border-r border-r-black px-2"
+                onclick="quantity.soup--;
+            operation('#quantity-soup', quantity.soup)
+          "
+              >
+                -
+              </button>
+              <p class="text-2xl" id="quantity-soup">0</p>
+              <button
+                class="border-l border-l-black px-2"
+                onclick="quantity.soup++; 
+                operation('#quantity-soup', quantity.soup)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 justify-between">
+            <h1 class="text-2xl font-bold">Burger</h1>
+            <div
+              class="flex w-24 justify-between border border-black rounded-lg"
+            >
+              <button
+                class="border-r border-r-black px-2"
+                onclick="quantity.burger--; operation('#quantity-burger', quantity.burger)"
+              >
+                -
+              </button>
+              <p class="text-2xl" id="quantity-burger">0</p>
+              <button
+                class="border-l border-l-black px-2"
+                onclick="quantity.burger++; operation('#quantity-burger', quantity.burger)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 justify-between">
+            <h1 class="text-2xl font-bold">Ice Cream</h1>
+            <div
+              class="flex w-24 justify-between border border-black rounded-lg"
+            >
+              <button
+                class="border-r border-r-black px-2"
+                onclick="quantity.iceCream--; operation('#quantity-ice-cream', quantity.iceCream)"
+              >
+                -
+              </button>
+              <p class="text-2xl" id="quantity-ice-cream">0</p>
+              <button
+                class="border-l border-l-black px-2"
+                onclick="quantity.iceCream++; operation('#quantity-ice-cream', quantity.iceCream)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+        <p
+          class="flex justify-between text-2xl font-bold mt-4 border-t-4 border-black"
+        >
+          Total: <span class="underline text-3xl" id="total">0</span>
+        </p>
+        <div class="flex justify-end mt-8 gap-4">
+          <button
+            class="text-xl bg-green-600 text-white rounded-xl py-2 px-4"
+            onclick="save()"
+          >
+            Save
+          </button>
+          <button
+            class="text-xl bg-red-600 text-white rounded-xl py-2 px-4"
+            onclick="reset()"
+          >
+            Reset
+          </button>
+        </div>
+        <div
+          class="border border-red-500 min-h-72 mt-10 flex flex-col gap-4 p-4"
+        >
+          <div
+            class="w-full border border-gray-400 rounded-md p-2 flex justify-between"
+          >
+            <p>Soup: 3, Burger: 1, Ice Cream: 2</p>
+            <p>Total: 30</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const price = {
+        soup: 10,
+        burger: 8,
+        iceCream: 5,
+      };
+
+      const quantity = {
+        soup: 0,
+        burger: 0,
+        iceCream: 0,
+      };
+      const ordersArray = [];
+
+      document.querySelector("#soup").innerHTML = price.soup;
+      document.querySelector("#burger").innerHTML = price.burger;
+      document.querySelector("#ice-cream").innerHTML = price.iceCream;
+
+      function operation(id, element) {
+        let total =
+          quantity.soup * price.soup +
+          quantity.burger * price.burger +
+          quantity.iceCream * price.iceCream;
+
+        document.querySelector("#total").innerHTML = `$ ${total}.00`;
+        document.querySelector(id).innerHTML = `${element}`;
+      }
+
+      function reset() {
+        document.querySelector("#total").innerHTML = 0;
+        document.querySelector("#quantity-soup").innerHTML = 0;
+        document.querySelector("#quantity-burger").innerHTML = 0;
+        document.querySelector("#quantity-ice-cream").innerHTML = 0;
+      }
+
+      function save() {
+        ordersArray.push([quantity.soup, quantity.burger, quantity.iceCream]);
+        console.log(ordersArray);
+      }
+    </script>
+  </body>
+</html>

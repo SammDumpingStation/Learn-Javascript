@@ -6,18 +6,118 @@
     <title>Re:Javascript</title>
     <link href="output.css" rel="stylesheet" />
   </head>
-  <body class="p-4 bg-[#f2f2f8] flex flex-col gap-3">
-    <div class="flex items-center gap-3">
+  <body class="p-4 bg-[#f2f2f8] flex flex-col gap-3 max-w-96 border">
+    <div class="flex items-center gap-3 justify-between">
       <h1 class="text-2xl font-bold">Soup</h1>
-      <p>$10</p>
+      <p class="text-2xl">$ <span id="soup">10</span></p>
     </div>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 justify-between">
       <h1 class="text-2xl font-bold">Burger</h1>
-      <p>$8</p>
+      <p class="text-2xl">$ <span id="burger">8</span></p>
     </div>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 justify-between">
       <h1 class="text-2xl font-bold">Ice Cream</h1>
-      <p>$5</p>
+      <p class="text-2xl">$ <span id="ice-cream">5</span></p>
     </div>
+    <hr class="border-2 border-black" />
+
+    <div>
+      <div class="flex items-center gap-3 justify-between">
+        <h1 class="text-2xl font-bold">Soup</h1>
+        <div>
+          <button
+            class="border border-black px-2"
+            onclick="soupQuantity--;
+            operation('#quantity-soup', soupQuantity)
+          "
+          >
+            -
+          </button>
+          <button
+            class="border border-black px-2"
+            onclick="soupQuantity++;
+            operation('#quantity-soup', soupQuantity)
+"
+          >
+            +
+          </button>
+        </div>
+
+        <p class="text-2xl" id="quantity-soup">0</p>
+      </div>
+      <div class="flex items-center gap-3 justify-between">
+        <h1 class="text-2xl font-bold">Burger</h1>
+        <div>
+          <button
+            class="border border-black px-2"
+            onclick="burgerQuantity--;
+            operation('#quantity-burger', burgerQuantity)"
+          >
+            -
+          </button>
+          <button
+            class="border border-black px-2"
+            onclick="burgerQuantity++;
+            operation('#quantity-burger', burgerQuantity)"
+          >
+            +
+          </button>
+        </div>
+        <p class="text-2xl" id="quantity-burger">0</p>
+      </div>
+      <div class="flex items-center gap-3 justify-between">
+        <h1 class="text-2xl font-bold">Ice Cream</h1>
+        <div>
+          <button
+            class="border border-black px-2"
+            onclick="iceCreamQuantity--;
+            operation('#quantity-ice-cream', iceCreamQuantity)"
+          >
+            -
+          </button>
+          <button
+            class="border border-black px-2"
+            onclick="iceCreamQuantity++;
+            operation('#quantity-ice-cream', iceCreamQuantity)"
+          >
+            +
+          </button>
+        </div>
+        <p class="text-2xl" id="quantity-ice-cream">0</p>
+      </div>
+    </div>
+    <p class="flex justify-between">
+      Total: <span class="text-2xl" id="total"></span>
+    </p>
+    <button class="border border-black" id="reset" onclick="reset()">
+      Reset
+    </button>
   </body>
+  <script>
+    let soupPrice = +document.querySelector("#soup").innerHTML;
+    let burgerPrice = +document.querySelector("#burger").innerHTML;
+    let iceCreamPrice = +document.querySelector("#ice-cream").innerHTML;
+    let soupQuantity = 0;
+    let burgerQuantity = 0;
+    let iceCreamQuantity = 0;
+
+    function operation(id, quantity) {
+      let total =
+        soupQuantity * soupPrice +
+        burgerQuantity * burgerPrice +
+        iceCreamQuantity * iceCreamPrice;
+
+      document.querySelector("#total").innerHTML = `$ ${total}.00`;
+
+      document.querySelector(id).innerHTML = `${quantity} piece/s`;
+    }
+
+    function reset() {
+      document.querySelector("#total").innerHTML = 0;
+      document.querySelector("#quantity-soup").innerHTML = 0;
+      document.querySelector("#quantity-burger").innerHTML = 0;
+      document.querySelector("#quantity-ice-cream").innerHTML = 0;
+    }
+  </script>
+  
 </html>
