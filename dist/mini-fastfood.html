@@ -148,57 +148,14 @@
           </button>
         </div>
         <div
+          id="orders-section"
           class="border border-red-500 min-h-72 mt-10 flex flex-col gap-4 p-4"
         >
-          <div
-            class="w-full border border-gray-400 rounded-md p-2 flex justify-between"
-          >
-            <p>Soup: 3, Burger: 1, Ice Cream: 2</p>
-            <p>Total: 30</p>
-          </div>
+          
         </div>
       </main>
     </div>
 
-    <script>
-      const price = {
-        soup: 10,
-        burger: 8,
-        iceCream: 5,
-      };
-
-      const quantity = {
-        soup: 0,
-        burger: 0,
-        iceCream: 0,
-      };
-      const ordersArray = [];
-
-      document.querySelector("#soup").innerHTML = price.soup;
-      document.querySelector("#burger").innerHTML = price.burger;
-      document.querySelector("#ice-cream").innerHTML = price.iceCream;
-
-      function operation(id, element) {
-        let total =
-          quantity.soup * price.soup +
-          quantity.burger * price.burger +
-          quantity.iceCream * price.iceCream;
-
-        document.querySelector("#total").innerHTML = `$ ${total}.00`;
-        document.querySelector(id).innerHTML = `${element}`;
-      }
-
-      function reset() {
-        document.querySelector("#total").innerHTML = 0;
-        document.querySelector("#quantity-soup").innerHTML = 0;
-        document.querySelector("#quantity-burger").innerHTML = 0;
-        document.querySelector("#quantity-ice-cream").innerHTML = 0;
-      }
-
-      function save() {
-        ordersArray.push([quantity.soup, quantity.burger, quantity.iceCream]);
-        console.log(ordersArray);
-      }
-    </script>
+    <script src="js/mini-fastfood.js"></script>
   </body>
 </html>
